@@ -244,7 +244,7 @@ def create_numpy_arrays():
     means_lsr=np.zeros((101,11))
     means_wsr2=np.zeros((101,11))
     means_lsr2=np.zeros((101,11))    
-    covariances=np.zeros((101,11,101,11,2,2))
+    covariances=np.zeros((101,11,101,11,4,4))
     for j in range(0,101): #iterate over every .01 increment of learning rate from 0 to 1 
         for i in range (0,11): #iterate over every 1 increment of inverse temperature from 0 to 10
             alpha = j*.01
