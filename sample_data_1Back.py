@@ -184,7 +184,7 @@ def create_numpy_arrays():
             lsr = []
             
         for p in range(1001): #1000 samples per param combination
-            ah,rh,ws,ls = generate_data_PRL([alpha, beta],100)
+            ah,rh,ws,ls = generate_data_PRL([alpha, beta],100) #Change 100 to reflect trial number
             wsr.append(ws)
             lsr.append(ls)
             means_wsr[j,i]=np.mean(wsr)
