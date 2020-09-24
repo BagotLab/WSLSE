@@ -193,4 +193,4 @@ def create_numpy_arrays():
             
     np.save("means_wsr",means_wsr)
     np.save("means_lsr",means_lsr)  
-    np.save("covariances",means_lsr)    
+    np.save("covariances",covariances)    
