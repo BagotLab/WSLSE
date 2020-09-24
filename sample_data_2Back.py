@@ -255,7 +255,7 @@ def create_numpy_arrays():
             lsr2 = []
             
         for p in range(1001): #1000 samples per param combination
-            ah,rh,ws,ls,ws2,lse = generate_data_PRL([alpha, beta],100)
+            ah,rh,ws,ls,ws2,lse = generate_data_PRL([alpha, beta],100) #Change 100 to reflect trial number
             wsr.append(ws)
             lsr.append(ls)
             wsr2.append(ws2)
