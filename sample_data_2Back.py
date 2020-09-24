@@ -238,3 +238,36 @@ def generate_data_PRL(params,trial_length):
     PercentLoseShift2 = (sum(lose_shift2)/(sum(lose_stay2)+sum(lose_shift2)))
 
     return action_history,reward_history, PercentWinStay, PercentLoseShift,PercentWinStay2,PercentLoseShift2
+
+def create_numpy_arrays():
+    means_wsr=np.zeros((101,11))
+    means_lsr=np.zeros((101,11))
+    means_wsr2=np.zeros((101,11))
+    means_lsr2=np.zeros((101,11))    
+    covariances=np.zeros((101,11,101,11,2,2))
+    for j in range(0,101): #iterate over every .01 increment of learning rate from 0 to 1 
+        for i in range (0,11): #iterate over every 1 increment of inverse temperature from 0 to 10
+            alpha = j*.01
+            beta = i 
+            wsr = []
+            lsr = []
+            wsr2 = []
+            lsr2 = []
+            
+        for p in range(1001): #1000 samples per param combination
+            ah,rh,ws,ls,ws2,lse = generate_data_PRL([alpha, beta],100)
+            wsr.append(ws)
+            lsr.append(ls)
+            wsr2.append(ws2)
+            lsr2.append(ls2)            
+            means_wsr[j,i]=np.mean(wsr)
+            means_lsr[j,i]=np.mean(lsr)
+            means_wsr2[j,i]=np.mean(wsr2)
+            means_lsr2[j,i]=np.mean(lsr2)            
+            covariances[j,i]=np.cov(wsr,lsr,wsr2,lsr2)
+            
+    np.save("means_wsr",means_wsr)
+    np.save("means_lsr",means_lsr)  
+    np.save("means_wsr2",means_wsr2)
+    np.save("means_lsr2",means_lsr2)     
+    np.save("covariances",covariances) 
